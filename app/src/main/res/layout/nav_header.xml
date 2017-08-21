@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:background="@color/secondColor">
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_marginTop="50dp"
+        android:id="@+id/icon_user"
+        android:scaleType="centerCrop"
+        android:src="@drawable/icon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center|center_vertical"
+        app:riv_oval="true"/>
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:id="@+id/name_user"
+        android:text="点击登录"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/read"
+            android:title="继续浏览"/>
+
+        <item
+            android:id="@+id/myData"
+            android:title="我的资料"/>
+
+        <item
+            android:id="@+id/myCollection"
+            android:title="我的收藏" />
+
+        <item
+            android:id="@+id/share"
+            android:title="推荐一下"/>
+
+        <item
+            android:id="@+id/aboutDeveloper"
+            android:title="关于开发者"/>
+    </group>
+</menu>
