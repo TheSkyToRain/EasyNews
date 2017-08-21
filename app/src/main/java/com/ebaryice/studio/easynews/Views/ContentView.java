@@ -8,6 +8,7 @@ import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVUser;
 import com.ebaryice.studio.easynews.Base.BaseActivity;
 import com.ebaryice.studio.easynews.R;
 
@@ -41,8 +42,13 @@ public class ContentView extends BaseActivity implements IContentView{
         collect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                collect();
-                Toast.makeText(getActivity(),"已收藏",Toast.LENGTH_SHORT).show();
+                if (AVUser.getCurrentUser()==null){
+                    Toast.makeText(getActivity(),"请先登录",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    collect();
+                    Toast.makeText(getActivity(),"已收藏",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

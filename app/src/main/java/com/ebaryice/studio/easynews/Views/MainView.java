@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -63,7 +64,11 @@ public class MainView extends BaseActivity implements IMainView {
 
             }
         });
-        if (user!=null){
+        if (user==null||user.getAVFile("userIcon")==null){
+            Glide.with(getActivity()).load(R.drawable.icon).into(roundedImageView);
+            Glide.with(getActivity()).load(R.drawable.icon).into(icon);
+
+        }else{
             Glide.with(getActivity()).load(user.getAVFile("userIcon").getUrl()).into(roundedImageView);
             Glide.with(getActivity()).load(user.getAVFile("userIcon").getUrl()).into(icon);
         }
@@ -121,8 +126,10 @@ public class MainView extends BaseActivity implements IMainView {
         LoginView.listener = new LoginView.FinishLogin() {
             @Override
             public void onFinish(String text) {
-                Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(roundedImageView);
-                Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(icon);
+                if (AVUser.getCurrentUser().getAVFile("userIcon")!=null){
+                    Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(roundedImageView);
+                    Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(icon);
+                }
                 username.setText(AVUser.getCurrentUser().getString("nickname"));
             }
         };
