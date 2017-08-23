@@ -2,6 +2,7 @@ package com.ebaryice.studio.easynews.Views;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.ebaryice.studio.easynews.Adapter.CloudRecyclerAdapter;
 import com.ebaryice.studio.easynews.Base.BaseActivity;
 import com.ebaryice.studio.easynews.Bean.CloudBean;
 import com.ebaryice.studio.easynews.R;
+import com.ebaryice.studio.easynews.SimpleItemTouchHelperCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +63,10 @@ public class CollectView extends BaseActivity implements ICollectView{
                 adapter = new CloudRecyclerAdapter(getActivity(),been);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                 recyclerView.setAdapter(adapter);
+                ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
+                ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+                touchHelper.attachToRecyclerView(recyclerView);
+                adapter.notifyDataSetChanged();
             }
         });
     }

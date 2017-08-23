@@ -66,7 +66,7 @@ public class DataView extends BaseActivity implements IDataView {
                 Log.d("userIcon","error没有头像");
             }
             else{
-                Glide.with(getActivity()).load(((AVFile)user.getAVFile("userIcon")).getUrl()).into(icon_data);
+                Glide.with(getActivity()).load((user.getAVFile("userIcon")).getUrl()).into(icon_data);
             }
         }
         icon_data.setOnClickListener(new View.OnClickListener() {
@@ -84,16 +84,19 @@ public class DataView extends BaseActivity implements IDataView {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String email = email_data.getText().toString();
+                String nickname = nickname_data.getText().toString();
                 if (AVUser.getCurrentUser() == null) {
                     Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                String email = email_data.getText().toString();
-                String nickname = nickname_data.getText().toString();
-                if (nickname.length() == 0 || nickname.equals("点击登录")) {
+                else if (nickname.length() == 0 || nickname.equals("点击登录")){
                     Toast.makeText(getActivity(), "请规范输入哦", Toast.LENGTH_SHORT).show();
                 }
-                save(email, nickname);
+                else if (icon_data.getDrawable().getCurrent().getConstantState()==getResources().getDrawable(R.drawable.icon).getConstantState()){
+                    Toast.makeText(getActivity(),"请设置个性头像",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    save(email, nickname);
                 }
             }
         });

@@ -110,8 +110,9 @@ public class MainView extends BaseActivity implements IMainView {
                     case R.id.myCollection:
                         toMyCol();
                         break;
+                    case R.id.share:
+                        break;
                     case R.id.aboutDeveloper:
-                        Toast.makeText(getActivity(),"哈哈哈哈哈",Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;
@@ -142,8 +143,13 @@ public class MainView extends BaseActivity implements IMainView {
         DataView.listener = new DataView.FinishSave() {
             @Override
             public void onFinish(String text) {
-                Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(roundedImageView);
-                Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(icon);
+                if (AVUser.getCurrentUser().getAVFile("userIcon") == null){
+                    Glide.with(getActivity()).load(R.drawable.icon).into(roundedImageView);
+                    Glide.with(getActivity()).load(R.drawable.icon).into(icon);
+                }else {
+                    Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(roundedImageView);
+                    Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(icon);
+                }
                 username.setText(AVUser.getCurrentUser().getString("nickname"));
             }
         };

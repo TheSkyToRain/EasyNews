@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"
         android:layout_height="40dp"
-        android:background="@drawable/toolbar_background"
+        android:background="@color/firstColor"
         app:layout_scrollFlags="scroll|enterAlways|snap">
         <ImageButton
             android:layout_marginLeft="10dp"
