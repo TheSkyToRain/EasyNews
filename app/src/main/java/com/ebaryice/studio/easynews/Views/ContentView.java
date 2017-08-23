@@ -1,7 +1,9 @@
 package com.ebaryice.studio.easynews.Views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -21,6 +23,7 @@ public class ContentView extends BaseActivity implements IContentView{
     private Intent intent;
     private ImageButton back,collect;
     public static FinishCollect listener;
+    private float mPosX,mPosY,mCurPosX,mCurPosY;
     public interface FinishCollect{
         void onFinish(String text);
     }
@@ -33,6 +36,7 @@ public class ContentView extends BaseActivity implements IContentView{
         webView.setHorizontalScrollBarEnabled(false);
         webView.setVerticalScrollBarEnabled(false);
         webView.loadUrl(url);
+        setFling(webView,getActivity());
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,5 +81,27 @@ public class ContentView extends BaseActivity implements IContentView{
         webView = $(R.id.webview);
         collect = $(R.id.btn_col);
         init();
+    }
+    private void setFling(View view, Context context){
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        mPosX = motionEvent.getX();
+                        mPosY = motionEvent.getY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        mCurPosX = motionEvent.getX();
+                        mCurPosY = motionEvent.getY();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        if(mCurPosY-mPosY<=20&&mCurPosX-mPosX>=80){
+                            back();
+                        }
+                }
+                return true;
+            }
+        });
     }
 }
