@@ -7,4 +7,5 @@ package com.ebaryice.studio.easynews.Views;
 public interface IStartView {
     void init(String url);
     void intent();
+    void preLogin(String username,String password);
 }

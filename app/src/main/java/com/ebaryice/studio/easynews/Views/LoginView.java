@@ -1,5 +1,6 @@
 package com.ebaryice.studio.easynews.Views;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,7 +31,7 @@ public class LoginView extends BaseActivity implements ILoginView{
     }
 
     @Override
-    public void login(final String username, String psw) {
+    public void login(final String username, final String psw) {
         AVUser.logInInBackground(username, psw, new LogInCallback<AVUser>() {
             @Override
             public void done(AVUser avUser, AVException e) {
@@ -38,8 +39,12 @@ public class LoginView extends BaseActivity implements ILoginView{
                     if(listener != null){
                         listener.onFinish("ok");
                     }
+                    SharedPreferences.Editor editor = getSharedPreferences("currentUser",MODE_PRIVATE).edit();
+                    editor.putString("username",username);
+                    editor.putString("password",psw);
+                    editor.commit();
                     Toast.makeText(getActivity(),"登录成功",Toast.LENGTH_SHORT).show();
-                    finish();
+                    back();
                 }
                 else{
                     Toast.makeText(getActivity(),"密码错误或者用户名不存在",Toast.LENGTH_SHORT).show();
@@ -90,7 +95,7 @@ public class LoginView extends BaseActivity implements ILoginView{
             public void onClick(View view) {
                 username = account.getText().toString();
                 psw = password.getText().toString();
-                if (username.length()!=11||psw.length()>16||psw.length()<9){
+                if (username.length()!=11||psw.length()>16||psw.length()<6){
                     Toast.makeText(getActivity(),"请规范输入哦",Toast.LENGTH_SHORT).show();
                 }
                 else {

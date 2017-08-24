@@ -187,8 +187,6 @@ public class MainView extends BaseActivity implements IMainView {
 
     @Override
     protected void initView() {
-        AVOSCloud.initialize(this,"ma8UB1XfoKqUhwtaK4tFUER3-gzGzoHsz","cNPB5u0j2M2Ufd1EIaFdGFLD");
-
         user = AVUser.getCurrentUser();
         drawerLayout = $(R.id.drawer_layout);
         navigationView = $(R.id.nav_view);
