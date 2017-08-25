@@ -31,12 +31,12 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseAct
     protected abstract void initView();
 
     //适配于Android 4.4以上系统
-
     private void initState(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            //手机下部虚拟键透明
+            //window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
     }
     @Override
