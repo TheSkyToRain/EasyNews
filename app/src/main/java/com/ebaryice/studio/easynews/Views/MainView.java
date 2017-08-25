@@ -69,8 +69,8 @@ public class MainView extends BaseActivity implements IMainView {
             Glide.with(getActivity()).load(R.drawable.icon).into(icon);
 
         }else{
-            Glide.with(getActivity()).load(user.getAVFile("userIcon").getUrl()).into(roundedImageView);
-            Glide.with(getActivity()).load(user.getAVFile("userIcon").getUrl()).into(icon);
+            Glide.with(getActivity()).load(user.getAVFile("userIcon").getUrl()).asBitmap().override(100,100).into(roundedImageView);
+            Glide.with(getActivity()).load(user.getAVFile("userIcon").getUrl()).asBitmap().override(100,100).into(icon);
         }
         roundedImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,8 +128,8 @@ public class MainView extends BaseActivity implements IMainView {
             @Override
             public void onFinish(String text) {
                 if (AVUser.getCurrentUser().getAVFile("userIcon")!=null){
-                    Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(roundedImageView);
-                    Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(icon);
+                    Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).asBitmap().override(100,100).into(roundedImageView);
+                    Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).asBitmap().override(100,100).into(icon);
                 }
                 username.setText(AVUser.getCurrentUser().getString("nickname"));
             }
@@ -147,8 +147,8 @@ public class MainView extends BaseActivity implements IMainView {
                     Glide.with(getActivity()).load(R.drawable.icon).into(roundedImageView);
                     Glide.with(getActivity()).load(R.drawable.icon).into(icon);
                 }else {
-                    Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(roundedImageView);
-                    Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(icon);
+                    Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).asBitmap().override(100,100).into(roundedImageView);
+                    Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).asBitmap().override(100,100).into(icon);
                 }
                 username.setText(AVUser.getCurrentUser().getString("nickname"));
             }
@@ -173,8 +173,8 @@ public class MainView extends BaseActivity implements IMainView {
         LogoutView.listener = new LogoutView.FinishLogout() {
             @Override
             public void onFinish(String text) {
-                Glide.with(getActivity()).load(R.drawable.icon).into(roundedImageView);
-                Glide.with(getActivity()).load(R.drawable.icon).into(icon);
+                Glide.with(getActivity()).load(R.drawable.icon).asBitmap().override(100,100).into(roundedImageView);
+                Glide.with(getActivity()).load(R.drawable.icon).asBitmap().override(100,100).into(icon);
                 username.setText("点击登录");
             }
         };

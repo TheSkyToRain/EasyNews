@@ -64,9 +64,10 @@ public class DataView extends BaseActivity implements IDataView {
             email_data.setText(AVUser.getCurrentUser().getEmail());
             if(user.getAVFile("userIcon")==null){
                 Log.d("userIcon","error没有头像");
+                Glide.with(getActivity()).load(R.drawable.icon).into(icon_data);
             }
             else{
-                Glide.with(getActivity()).load((user.getAVFile("userIcon")).getUrl()).into(icon_data);
+                Glide.with(getActivity()).load((user.getAVFile("userIcon")).getUrl()).asBitmap().override(100,100).into(icon_data);
             }
         }
         icon_data.setOnClickListener(new View.OnClickListener() {
@@ -91,9 +92,6 @@ public class DataView extends BaseActivity implements IDataView {
                 }
                 else if (nickname.length() == 0 || nickname.equals("点击登录")){
                     Toast.makeText(getActivity(), "请规范输入哦", Toast.LENGTH_SHORT).show();
-                }
-                else if (icon_data.getDrawable().getCurrent().getConstantState()==getResources().getDrawable(R.drawable.icon).getConstantState()){
-                    Toast.makeText(getActivity(),"请设置个性头像",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     save(email, nickname);
@@ -145,7 +143,7 @@ public class DataView extends BaseActivity implements IDataView {
             case CODE_PHOTO_REQUEST:
                 final AVUser user = AVUser.getCurrentUser();
                 final Uri uri = data.getData();
-                Glide.with(getActivity()).load(uri).into(icon_data);
+                Glide.with(getActivity()).load(uri).asBitmap().override(100,100).into(icon_data);
                 String bitmapPath = getRealFilePath(this,uri);
                 AVFile avFile = null;
                 try {

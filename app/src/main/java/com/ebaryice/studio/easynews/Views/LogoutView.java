@@ -45,7 +45,7 @@ public class LogoutView extends BaseActivity implements ILogoutView {
         toolbar_text.setText("退出登录");
         if (AVUser.getCurrentUser().getAVFile("userIcon")!=null){
 
-            Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).into(icon);
+            Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).asBitmap().override(100,100).into(icon);
 
         }
         username.setText(AVUser.getCurrentUser().getUsername().toString());
