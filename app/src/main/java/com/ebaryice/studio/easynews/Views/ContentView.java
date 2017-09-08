@@ -96,7 +96,7 @@ public class ContentView extends BaseActivity implements IContentView{
                         mCurPosY = motionEvent.getY();
                         break;
                     case MotionEvent.ACTION_UP:
-                        if(mCurPosY-mPosY<=20&&mCurPosX-mPosX>=80){
+                        if(mCurPosY-mPosY<30&&mCurPosX-mPosX>=75){
                             back();
                         }
                 }

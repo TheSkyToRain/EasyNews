@@ -42,7 +42,8 @@ public class MainView extends BaseActivity implements IMainView {
     private String[] type = {"top","shehui","guonei","guoji","yule","tiyu","junshi","keji","caijing","shishang"};
     private List<Fragment> list;
     AVUser user ;
-
+    //记录用户首次点击返回键的时间
+    private long firstTime = 0;
     @Override
     public void init() {
         list = new ArrayList<>();
@@ -127,7 +128,7 @@ public class MainView extends BaseActivity implements IMainView {
         LoginView.listener = new LoginView.FinishLogin() {
             @Override
             public void onFinish(String text) {
-                if (AVUser.getCurrentUser().getAVFile("userIcon")!=null){
+                if (AVUser.getCurrentUser().getAVFile("userIcon") != null){
                     Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).asBitmap().override(100,100).into(roundedImageView);
                     Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).asBitmap().override(100,100).into(icon);
                 }
@@ -184,7 +185,16 @@ public class MainView extends BaseActivity implements IMainView {
     protected int getContentViewId() {
         return R.layout.main_view;
     }
-
+    @Override
+    public void onBackPressed() {
+        long secondTime = System.currentTimeMillis();
+        if (secondTime - firstTime > 2000) {
+            Toast.makeText(getActivity(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            firstTime = secondTime;
+        } else {
+            this.finish();
+        }
+    }
     @Override
     protected void initView() {
         user = AVUser.getCurrentUser();

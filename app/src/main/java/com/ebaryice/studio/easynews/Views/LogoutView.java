@@ -1,9 +1,11 @@
 package com.ebaryice.studio.easynews.Views;
 
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVUser;
 import com.bumptech.glide.Glide;
@@ -70,6 +72,11 @@ public class LogoutView extends BaseActivity implements ILogoutView {
         if(listener!=null){
             listener.onFinish("ok");
         }
+        SharedPreferences.Editor editor = getSharedPreferences("currentUser",MODE_PRIVATE).edit();
+        editor.putString("username","");
+        editor.putString("password","");
+        editor.commit();
+        Toast.makeText(getActivity(),"退出登录",Toast.LENGTH_SHORT).show();
         finish();
     }
 

@@ -108,6 +108,7 @@ public class DataView extends BaseActivity implements IDataView {
         if (listener != null) {
             listener.onFinish("ok");
         }
+        Toast.makeText(getActivity(),"保存成功",Toast.LENGTH_SHORT).show();
         finish();
     }
 

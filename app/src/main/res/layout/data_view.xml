@@ -66,7 +66,7 @@
             app:met_baseColor="#000000"
             app:met_primaryColor="@color/thirdColor"
             app:met_floatingLabel="highlight"
-            app:met_floatingLabelText="邮箱可以帮你找回密码"
+            app:met_floatingLabelText="我们通过邮箱联系你"
             android:hint="请输入你的邮箱地址"
             app:met_maxCharacters="20"
             app:met_clearButton="true" />
