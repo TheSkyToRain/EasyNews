@@ -59,6 +59,7 @@ public class ContentView extends BaseActivity{
 
     private void back() {
         finish();
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }
 
     private void collect() {

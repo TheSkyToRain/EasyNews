@@ -84,6 +84,7 @@ public class StartView extends BaseActivity{
     private void quickIntent(){
         Intent intent = new Intent(getActivity(),MainView.class);
         getActivity().startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
         getActivity().finish();
     }
     private void  setFirstPic(NewsModel model){

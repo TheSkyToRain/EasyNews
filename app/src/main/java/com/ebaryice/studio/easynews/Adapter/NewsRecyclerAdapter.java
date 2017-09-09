@@ -1,7 +1,9 @@
 package com.ebaryice.studio.easynews.Adapter;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;

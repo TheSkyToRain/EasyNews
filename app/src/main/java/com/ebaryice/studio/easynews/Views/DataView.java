@@ -106,11 +106,12 @@ public class DataView extends BaseActivity {
             listener.onFinish("ok");
         }
         Toast.makeText(getActivity(),"保存成功",Toast.LENGTH_SHORT).show();
-        finish();
+        back();
     }
 
     public void back() {
         finish();
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }
 
     @Override

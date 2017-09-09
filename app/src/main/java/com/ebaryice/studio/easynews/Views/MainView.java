@@ -1,6 +1,8 @@
 package com.ebaryice.studio.easynews.Views;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -124,11 +126,16 @@ public class MainView extends BaseActivity {
 
     private void toLogin() {
         Intent intent = new Intent(getActivity(),LoginView.class);
-        getActivity().startActivity(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getActivity().startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        }
         LoginView.listener = new LoginView.FinishLogin() {
             @Override
             public void onFinish(String text) {
-                if (AVUser.getCurrentUser().getAVFile("userIcon") != null){
+                if (AVUser.getCurrentUser().getAVFile("userIcon") == null){
+                    Glide.with(getActivity()).load(R.drawable.icon).into(roundedImageView);
+                    Glide.with(getActivity()).load(R.drawable.icon).into(icon);
+                }else{
                     Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).asBitmap().override(100,100).into(roundedImageView);
                     Glide.with(getActivity()).load(AVUser.getCurrentUser().getAVFile("userIcon").getUrl()).asBitmap().override(100,100).into(icon);
                 }
@@ -139,7 +146,9 @@ public class MainView extends BaseActivity {
 
     private void toMyData() {
         Intent intent = new Intent(getActivity(),DataView.class);
-        getActivity().startActivity(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getActivity().startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        }
         DataView.listener = new DataView.FinishSave() {
             @Override
             public void onFinish(String text) {
@@ -162,12 +171,15 @@ public class MainView extends BaseActivity {
         else{
             Intent intent = new Intent(getActivity(),CollectView.class);
             getActivity().startActivity(intent);
-        }
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            }
     }
 
     private void toLogout() {
         Intent intent = new Intent(getActivity(),LogoutView.class);
-        getActivity().startActivity(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getActivity().startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        }
         LogoutView.listener = new LogoutView.FinishLogout() {
             @Override
             public void onFinish(String text) {
@@ -179,7 +191,9 @@ public class MainView extends BaseActivity {
     }
     private void toShare(){
         Intent intent = new Intent(getActivity(),ShareView.class);
-        getActivity().startActivity(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getActivity().startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        }
     }
 
     @Override

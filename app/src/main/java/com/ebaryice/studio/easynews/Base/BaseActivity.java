@@ -1,13 +1,19 @@
 package com.ebaryice.studio.easynews.Base;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.ebaryice.studio.easynews.R;
 
 import java.lang.reflect.Field;
 
@@ -21,6 +27,15 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseAct
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        Transition explode = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            explode = TransitionInflater.from(this).inflateTransition(R.transition.explode);
+        }
+        //进入时使用
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setEnterTransition(explode);
+        }
         setContentView(getContentViewId());
         initState();
         initView();

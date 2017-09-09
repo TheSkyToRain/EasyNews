@@ -75,10 +75,11 @@ public class LogoutView extends BaseActivity {
         editor.putString("password","");
         editor.commit();
         Toast.makeText(getActivity(),"退出登录",Toast.LENGTH_SHORT).show();
-        finish();
+        back();
     }
 
     private void back() {
         finish();
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }
 }

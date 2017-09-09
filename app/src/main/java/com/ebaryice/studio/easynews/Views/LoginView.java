@@ -70,6 +70,7 @@ public class LoginView extends BaseActivity{
     }
     private void back() {
         getActivity().finish();
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }
 
     @Override

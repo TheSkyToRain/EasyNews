@@ -83,5 +83,6 @@ public class CollectView extends BaseActivity{
     }
     private void back() {
         finish();
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }
 }
