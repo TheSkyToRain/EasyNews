@@ -193,6 +193,7 @@ public class MainView extends BaseActivity {
         Intent intent = new Intent(getActivity(),ShareView.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getActivity().startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+            Toast.makeText(getActivity(),"感谢你的推荐",Toast.LENGTH_SHORT).show();
         }
     }
 

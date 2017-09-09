@@ -2,8 +2,10 @@ package com.ebaryice.studio.easynews.Views;
 
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ebaryice.studio.easynews.Base.BaseActivity;
 import com.ebaryice.studio.easynews.R;
 
@@ -14,6 +16,7 @@ import com.ebaryice.studio.easynews.R;
 public class ShareView extends BaseActivity {
     private TextView title;
     private ImageButton back;
+    private ImageView img;
     @Override
     protected int getContentViewId() {
         return R.layout.share_view;
@@ -23,6 +26,7 @@ public class ShareView extends BaseActivity {
     protected void initView() {
         title = $(R.id.text_toolbar);
         back = $(R.id.btn_back);
+        img = $(R.id.share_img);
         init();
     }
     private void init(){
@@ -33,6 +37,7 @@ public class ShareView extends BaseActivity {
                 back();
             }
         });
+        Glide.with(this).load("http://s11.sinaimg.cn/bmiddle/62614be6t72bd0b6bb8ca&690").asGif().into(img);
     }
     private void back(){
         finish();

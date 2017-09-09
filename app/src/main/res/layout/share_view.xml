@@ -4,18 +4,9 @@
     android:layout_height="match_parent">
     <include layout="@layout/default_toolbar"/>
     <ImageView
-        android:id="@+id/erweima"
+        android:id="@+id/share_img"
         android:layout_centerInParent="true"
-        android:scaleType="centerCrop"
-        android:layout_width="250dp"
-        android:layout_height="250dp" />
-    <TextView
-        android:textColor="#000"
-        android:text="请扫码下载App"
-        android:textSize="18sp"
-        android:layout_marginTop="25dp"
-        android:layout_below="@id/erweima"
-        android:gravity="center_horizontal"
+        android:scaleType="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 </RelativeLayout>
