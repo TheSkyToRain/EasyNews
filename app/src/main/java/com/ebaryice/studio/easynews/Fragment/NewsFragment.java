@@ -35,7 +35,7 @@ public class NewsFragment extends BaseFragment {
         refreshLayout = $(R.id.refresh);
         recyclerView = $(R.id.recyclerView);
         refreshLayout.setColorSchemeColors(Color.parseColor("#29b6f6"));
-        refreshLayout.setProgressViewEndTarget(true,100);
+        refreshLayout.setProgressViewEndTarget(true,150);
         model = new NewsModel();
         loading();
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

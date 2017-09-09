@@ -33,7 +33,7 @@ import java.io.FileNotFoundException;
  * Created by Administrator on 2017/8/19 0019.
  */
 
-public class DataView extends BaseActivity implements IDataView {
+public class DataView extends BaseActivity {
     private static final int CODE_PHOTO_REQUEST = 1;
     private RoundedImageView icon_data;
     private TextView toolbar_text;
@@ -46,13 +46,11 @@ public class DataView extends BaseActivity implements IDataView {
         void onFinish(String text);
     }
 
-    @Override
     public void change() {
         Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         getActivity().startActivityForResult(intent, CODE_PHOTO_REQUEST);
     }
 
-    @Override
     public void init() {
         toolbar_text.setText("我的资料");
         AVUser user = AVUser.getCurrentUser();
@@ -100,7 +98,6 @@ public class DataView extends BaseActivity implements IDataView {
         });
     }
 
-    @Override
     public void save(String email, String nickname) {
         AVUser.getCurrentUser().setEmail(email);
         AVUser.getCurrentUser().put("nickname", nickname);
@@ -112,7 +109,6 @@ public class DataView extends BaseActivity implements IDataView {
         finish();
     }
 
-    @Override
     public void back() {
         finish();
     }

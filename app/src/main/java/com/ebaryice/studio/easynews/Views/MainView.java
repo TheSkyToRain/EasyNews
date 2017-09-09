@@ -30,7 +30,7 @@ import java.util.List;
  * Created by Administrator on 2017/8/16 0016.
  */
 
-public class MainView extends BaseActivity implements IMainView {
+public class MainView extends BaseActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private TextView textView,username;
@@ -44,8 +44,8 @@ public class MainView extends BaseActivity implements IMainView {
     AVUser user ;
     //记录用户首次点击返回键的时间
     private long firstTime = 0;
-    @Override
-    public void init() {
+
+    private void init() {
         list = new ArrayList<>();
         for (int i = 0;i<title.length;i++){
             list.add(new NewsFragment(type[i]));
@@ -112,8 +112,9 @@ public class MainView extends BaseActivity implements IMainView {
                         toMyCol();
                         break;
                     case R.id.share:
+                        toShare();
                         break;
-                    case R.id.aboutDeveloper:
+                    case R.id.advice:
                         break;
                 }
                 return true;
@@ -121,8 +122,7 @@ public class MainView extends BaseActivity implements IMainView {
         });
     }
 
-    @Override
-    public void toLogin() {
+    private void toLogin() {
         Intent intent = new Intent(getActivity(),LoginView.class);
         getActivity().startActivity(intent);
         LoginView.listener = new LoginView.FinishLogin() {
@@ -137,8 +137,7 @@ public class MainView extends BaseActivity implements IMainView {
         };
     }
 
-    @Override
-    public void toMyData() {
+    private void toMyData() {
         Intent intent = new Intent(getActivity(),DataView.class);
         getActivity().startActivity(intent);
         DataView.listener = new DataView.FinishSave() {
@@ -156,8 +155,7 @@ public class MainView extends BaseActivity implements IMainView {
         };
     }
 
-    @Override
-    public void toMyCol() {
+    private void toMyCol() {
         if(AVUser.getCurrentUser()==null){
             Toast.makeText(getActivity(),"请先登录",Toast.LENGTH_SHORT).show();
         }
@@ -167,8 +165,7 @@ public class MainView extends BaseActivity implements IMainView {
         }
     }
 
-    @Override
-    public void toLogout() {
+    private void toLogout() {
         Intent intent = new Intent(getActivity(),LogoutView.class);
         getActivity().startActivity(intent);
         LogoutView.listener = new LogoutView.FinishLogout() {
@@ -179,6 +176,10 @@ public class MainView extends BaseActivity implements IMainView {
                 username.setText("点击登录");
             }
         };
+    }
+    private void toShare(){
+        Intent intent = new Intent(getActivity(),ShareView.class);
+        getActivity().startActivity(intent);
     }
 
     @Override

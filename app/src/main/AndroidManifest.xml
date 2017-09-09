@@ -46,6 +46,7 @@
         <activity android:name=".Views.DataView"/>
         <activity android:name=".Views.ContentView"/>
         <activity android:name=".Views.CollectView"/>
+        <activity android:name=".Views.ShareView"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

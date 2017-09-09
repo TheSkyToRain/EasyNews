@@ -26,14 +26,13 @@ import java.util.List;
  * Created by Administrator on 2017/8/21 0021.
  */
 
-public class CollectView extends BaseActivity implements ICollectView{
+public class CollectView extends BaseActivity{
     private CloudRecyclerAdapter adapter;
     private RecyclerView recyclerView;
     private ImageButton back;
     private TextView text_toolbar;
 
-    @Override
-    public void init() {
+    private void init() {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,8 +43,7 @@ public class CollectView extends BaseActivity implements ICollectView{
         find();
     }
 
-    @Override
-    public void find() {
+    private void find() {
         AVQuery<AVObject> query = new AVQuery<>("myCollection");
         query.whereEqualTo("userId",AVUser.getCurrentUser().getObjectId());
         query.findInBackground(new FindCallback<AVObject>() {
@@ -83,8 +81,7 @@ public class CollectView extends BaseActivity implements ICollectView{
         recyclerView = $(R.id.collectionRecyclerView);
         init();
     }
-    @Override
-    public void back() {
+    private void back() {
         finish();
     }
 }

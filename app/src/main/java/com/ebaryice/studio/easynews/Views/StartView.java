@@ -22,7 +22,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class StartView extends BaseActivity implements IStartView{
+public class StartView extends BaseActivity{
     private ImageView imageView;
     private CardView cardView;
     private NewsModel model;
@@ -50,8 +50,7 @@ public class StartView extends BaseActivity implements IStartView{
         Glide.with(getActivity()).load(url).into(imageView);
     }
 
-    @Override
-    public void intent() {
+    private void intent() {
         final Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -69,8 +68,7 @@ public class StartView extends BaseActivity implements IStartView{
         });
     }
 
-    @Override
-    public void preLogin(String username,String password) {
+    private void preLogin(String username,String password) {
             AVUser.logInInBackground(username, password, new LogInCallback<AVUser>() {
                 @Override
                 public void done(AVUser avUser, AVException e) {

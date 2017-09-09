@@ -17,7 +17,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
  * Created by Administrator on 2017/8/19 0019.
  */
 
-public class LogoutView extends BaseActivity implements ILogoutView {
+public class LogoutView extends BaseActivity {
     private ImageButton back;
     private Button logout;
     private TextView toolbar_text,username,nickname;
@@ -42,8 +42,7 @@ public class LogoutView extends BaseActivity implements ILogoutView {
         init();
     }
 
-    @Override
-    public void init() {
+    private void init() {
         toolbar_text.setText("退出登录");
         if (AVUser.getCurrentUser().getAVFile("userIcon")!=null){
 
@@ -66,8 +65,7 @@ public class LogoutView extends BaseActivity implements ILogoutView {
         });
     }
 
-    @Override
-    public void logout() {
+    private void logout() {
         AVUser.getCurrentUser().logOut();
         if(listener!=null){
             listener.onFinish("ok");
@@ -80,8 +78,7 @@ public class LogoutView extends BaseActivity implements ILogoutView {
         finish();
     }
 
-    @Override
-    public void back() {
+    private void back() {
         finish();
     }
 }

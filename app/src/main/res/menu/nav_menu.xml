@@ -20,8 +20,8 @@
                     android:id="@+id/share"
                     android:title="推荐一下"/>
                 <item
-                    android:id="@+id/aboutDeveloper"
-                    android:title="关于开发者"/>
+                    android:id="@+id/advice"
+                    android:title="意见反馈"/>
             </menu>
         </item>
 </menu>

@@ -18,7 +18,7 @@ import com.ebaryice.studio.easynews.R;
  * Created by Administrator on 2017/8/20 0020.
  */
 
-public class ContentView extends BaseActivity implements IContentView{
+public class ContentView extends BaseActivity{
     private WebView webView;
     private Intent intent;
     private ImageButton back,collect;
@@ -27,8 +27,8 @@ public class ContentView extends BaseActivity implements IContentView{
     public interface FinishCollect{
         void onFinish(String text);
     }
-    @Override
-    public void init() {
+
+    private void init() {
         intent = getIntent();
         String url = intent.getStringExtra("url");
         webView.getSettings().setLoadWithOverviewMode(true);
@@ -57,13 +57,11 @@ public class ContentView extends BaseActivity implements IContentView{
         });
     }
 
-    @Override
-    public void back() {
+    private void back() {
         finish();
     }
 
-    @Override
-    public void collect() {
+    private void collect() {
         if (listener!=null){
             listener.onFinish("ok");
         }

@@ -19,7 +19,7 @@ import com.ebaryice.studio.easynews.R;
  * Created by Administrator on 2017/8/18 0018.
  */
 
-public class LoginView extends BaseActivity implements ILoginView{
+public class LoginView extends BaseActivity{
     private EditText account,password;
     private Button signIn,register;
     private ImageButton back;
@@ -29,9 +29,7 @@ public class LoginView extends BaseActivity implements ILoginView{
     public interface FinishLogin{
         void onFinish(String text);
     }
-
-    @Override
-    public void login(final String username, final String psw) {
+    private void login(final String username, final String psw) {
         AVUser.logInInBackground(username, psw, new LogInCallback<AVUser>() {
             @Override
             public void done(AVUser avUser, AVException e) {
@@ -52,9 +50,7 @@ public class LoginView extends BaseActivity implements ILoginView{
             }
         });
     }
-
-    @Override
-    public void register(final String username, String psw) {
+    private void register(final String username, String psw) {
         final AVUser user = new AVUser();
         user.setUsername(username);
         user.setPassword(psw);
@@ -72,9 +68,7 @@ public class LoginView extends BaseActivity implements ILoginView{
             }
         });
     }
-
-    @Override
-    public void back() {
+    private void back() {
         getActivity().finish();
     }
 
