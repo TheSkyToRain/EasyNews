@@ -2,7 +2,6 @@ package com.ebaryice.studio.easynews.Views;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -95,7 +94,7 @@ public class ContentView extends BaseActivity{
                         mCurPosY = motionEvent.getY();
                         break;
                     case MotionEvent.ACTION_UP:
-                        if(mCurPosY-mPosY<30&&mCurPosX-mPosX>=75){
+                        if(mCurPosY-mPosY<30&&mCurPosX-mPosX>=65){
                             back();
                         }
                 }
